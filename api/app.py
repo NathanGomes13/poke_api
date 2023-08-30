@@ -19,7 +19,8 @@ def index():
             search_term = request.form.get('search_term', '')  # Obtenha o termo de pesquisa do formulário
             if search_term:  # Realize a pesquisa aqui usando o search_term
                 if search_term:
-                    resultados, quantidade, offset, desativarButtonPrev, desativarButtonNext = async_wrapper(pokedex.pesquisar_pokemon_por_nome)(search_term)
+                    resultados, quantidade, offset, desativarButtonPrev, desativarButtonNext = async_wrapper(
+                        pokedex.pesquisar_pokemon_por_nome)(search_term)
                     return render_template('index.html', resultados_pesquisa=resultados, total_pokemon_count=quantidade, offset=quantidade,desativarButtonPrev=desativarButtonPrev, desativarButtonNext=desativarButtonNext)
             else:
                 nomes_tipos_sprites, total_pokemon_count, offset, desativarButtonPrev = async_wrapper(
